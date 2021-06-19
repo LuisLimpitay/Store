@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 3',
+    'title' => 'Store',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -237,94 +237,58 @@ return [
         ],
 
         // Sidebar items:
-        [
-            'type' => 'sidebar-menu-search',
-            'text' => 'search',
-        ],
+        
         [
             'text' => 'blog',
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',
         ],
+       
+        ['header' => 'GESTION COMERCIAL'],
+        
         [
-            'text' => 'Category',
-            'url'  => 'admin/categories',
-            'icon' => 'fas fa-fw fa-user',
+            'text' => 'Ventas',
+            'route'  => 'admin.sales.index',
+            'icon' => 'fas fa-layer-group fa-fw',
+            'active' => ['admin/sales*']
         ],
-        ['header' => 'account_settings'],
-        [
-            'text' => 'profile',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
-        ],
-        [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
-        ],
-        [
-            'text'    => 'multilevel',
-            'icon'    => 'fas fa-fw fa-share',
-            'submenu' => [
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
-                [
-                    'text'    => 'level_one',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'level_two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
-            ],
-        ],
+
+        
+        
         ['header' => 'C R U D'],
+        [
+            'text' => 'Usuarios',
+            'route'  => 'admin.users.index',
+            'icon' => 'fas fa-layer-group fa-fw',
+            'active' => ['admin/users*'],
+            'can' => 'admin.users.index'
+        ],
 
         [
             'text' => 'Categorias',
             'route'  => 'admin.categories.index',
             'icon' => 'fas fa-layer-group fa-fw',
-            'active' => ['admin/categories*']
+            'active' => ['admin/categories*'],
+            'can' => 'admin.categories.index'
         ],
 
-        ['header' => 'labels'],
         [
-            'text'       => 'important',
-            'icon_color' => 'red',
-            'url'        => '#',
+            'text' => 'Productos',
+            'route'  => 'admin.products.index',
+            'icon' => 'fas fa-layer-group fa-fw',
+            'active' => ['admin/products*'],
+            'can' => 'admin.products.index'
         ],
+
         [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
-            'url'        => '#',
+            'text' => 'Turnos',
+            'route'  => 'admin.turns.index',
+            'icon' => 'fas fa-layer-group fa-fw',
+            'active' => ['admin/turns*'],
+            'can' => 'admin.turns.index'
         ],
-        [
-            'text'       => 'information',
-            'icon_color' => 'cyan',
-            'url'        => '#',
-        ],
+
+        
     ],
 
     /*

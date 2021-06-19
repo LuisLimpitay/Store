@@ -24,10 +24,14 @@ class CategoryController extends Controller
     }
 
 
-    public function store(StoreCategoryRequests $request)
+    public function store(Request $request)
     {
-        Category::create($request->all());
-        return redirect()->route('admin.categories.index');
+        $request->validate([
+            'name' => 'required|unique:categories',
+            'slug' => "required"
+        ]);
+        $category = Category::create($request->all());
+        return redirect()->route('admin.categories.index', $category);
     }
 
 
@@ -42,9 +46,14 @@ class CategoryController extends Controller
     }
 
 
-    public function update(UpdateCategoryRequests $request, Category $category)
+    public function update(Request $request, Category $category)
     {
-        Category::create($request->all());
+        
+        $request->validate([
+            'name' => 'required',
+            'slug' => "required|unique:categories,slug,$category->id"
+        ]);
+        $category->update($request->all());
         return redirect()->route('admin.categories.index');
     }
 

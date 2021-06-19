@@ -17,6 +17,7 @@ class StoreCategoryRequests extends FormRequest
         return [
             'name' => 'required|unique:categories|max:15',
 
+
         ];
     }
     public  function messages()

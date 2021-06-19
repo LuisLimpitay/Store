@@ -15,9 +15,18 @@ class Product extends Model
     public function category(){
         return $this->belongsTo(Category::class);
     }
-    //A MUCHOS
+    
+    //MUCHO A MUCHOS
     public function sales(){
         return $this->belongsToMany(Sale::class);
+    }
+
+    //Relacion UNO A MUCHOS
+    public function users(){
+        return $this->belongsToMany(User::class, 'product_sale')
+                    ->withTimestamps()
+                    ->withPivot('ammount', 'status' , 'product_id', 'user_id', 'created_at');
+
     }
 
 }

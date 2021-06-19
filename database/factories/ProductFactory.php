@@ -17,12 +17,11 @@ class ProductFactory extends Factory
     {
         $name = $this->faker->unique()->sentence(1);
         return [
-            'code' => $this->faker->unique()->ean8(),
             'name' => $name,
             'slug' => Str::slug($name, '-'),
             'stock' => $this->faker->randomDigit(),
             'price' => $this->faker->buildingNumber(),
-            'image' => '',
+            'image' => 'https://dummyimage.com/200x150/000/fff',
             'category_id' => Category::all()->random()->id,
         ];
     }

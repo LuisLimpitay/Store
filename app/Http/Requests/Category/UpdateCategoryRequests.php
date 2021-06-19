@@ -19,10 +19,8 @@ class UpdateCategoryRequests extends FormRequest
     public function rules()
     {
         return [
-            'phone' => 'required|unique:clients,phone'
-                .$this->route('client')->id.'max:10',
-            'name' => 'required|unique:categories,name'
-                .$this->route('client')->id.'max:15',
+            
+            'name' => 'required|unique:categories,name'                
 
         ];
     }

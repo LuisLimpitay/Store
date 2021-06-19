@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
+@section('title', 'Categorias')
 
 @section('content_header')
-    <h1>Dashboard</h1>
+    <h1>CRUD</h1>
 @stop
 
 @section('content')
@@ -13,13 +13,14 @@
             <div class="row">
                 <div class="col-12">
 
-
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">Categorias</h3>
                             <div class="card-tools">
+                                @can('admin.categories.create')
                                 <a class="btn btn-success" href="{{route('admin.categories.create')}}"><i
                                     class="fas fa-plus-square"></i></a>
+                                @endcan
                             </div>
                         </div>
                         <!-- /.card-header -->
@@ -30,7 +31,7 @@
                                         <th>Id</th>
                                         <th>Nombre</th>
                                         
-                                        <th width="120px">Action</th>
+                                        <th width="90px">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -40,11 +41,15 @@
                                         <td>{{$category->name}}</td>
                                         
                                         <td>
-                                            <a class="btn btn-primary btn-sm" href="{{ route('admin.categories.edit',$category) }}"><i
-                                                class="fas fa-edit"></i></a>
-                                            {!! Form::open(['method' => 'DELETE','route' => ['admin.categories.destroy', $category],'style'=>'display:inline']) !!}
-                                            {{ Form::button('<i class="fa fa-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-sm'] )  }}
-                                            {!! Form::close() !!}
+                                            @can('admin.categories.edit')
+                                                <a class="btn btn-primary btn-sm" href="{{ route('admin.categories.edit',$category) }}"><i
+                                                    class="fas fa-edit"></i></a>
+                                            @endcan
+                                            @can('admin.categories.destroy')
+                                                {!! Form::open(['method' => 'DELETE','route' => ['admin.categories.destroy', $category],'style'=>'display:inline']) !!}
+                                                {{ Form::button('<i class="fa fa-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-sm'] )  }}
+                                                {!! Form::close() !!}
+                                            @endcan
                                         </td>
                                     </tr>
                                     @endforeach
@@ -79,7 +84,7 @@
             "searching": true,
             "ordering": true,
             "info": true,
-            "autoWidth": false,
+            "autoWidth": true,
             "responsive": true,
         });
     });

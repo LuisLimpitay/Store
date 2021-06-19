@@ -25,7 +25,6 @@ class StoreProductRequest extends FormRequest
     public function rules()
     {
         return [
-            'code' => 'required|string|max:15|unique:products',
             'name' => 'required|string|max:15|unique:products',
             'stock' => 'required',
             'price' => 'required',
@@ -48,11 +47,11 @@ class StoreProductRequest extends FormRequest
             'price.string' => 'El valor no es correcto',
             'price.max' => 'Solo se permiten 15 caracteres',
 
-            'stock.required' => 'El campo precio es requerido',
+            'stock.required' => 'El campo stock es requerido',
             'stock.string' => 'El valor no es correcto',
             'stock.max' => 'Solo se permiten 15 caracteres',
 
-            'category_id.required' => 'El campo precio es requerido',
+            'category_id.required' => 'El campo categoria es requerido',
             'category_id.string' => 'El valor no es correcto',
             'category_id.max' => 'Solo se permiten 15 caracteres'
         ];

@@ -104,8 +104,10 @@
 
                                 {{-- SI EL USUARIO ES ADMIN --}}
                                 
+                                @can('admin.index')
                                 <a href="{{route('admin.index')}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">
                                     Administrador</a>
+                                @endcan
 
 
                                 {{-- aca como parametro mando algo que parece raro pero es el ID del user
